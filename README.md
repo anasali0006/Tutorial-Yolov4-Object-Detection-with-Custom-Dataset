@@ -13,5 +13,16 @@ The only prerequisite that we have here is the dataset. You should have your dat
 * The label-text file's name is same as image-file's name
 * Label-text file will be formatted like <object_class> <x_center> <y_center> <width.> <height.>
 
-If you have your dataset labelled in some other format, it can easily be converted to Yolo format. Just Google it. 
+If you have your dataset labelled in some other format, it can easily be converted to Yolo format. Just Google how to do it.
+
+Plus zip your dataset and upload it to Google Drive so it can be easily accessed from the Colab.
+
+Just one last thing before we go for training. Create a folder in Google Drive where we will store the backup of the training results in case the training is interrupted and we don't want to start from scratch. 
+
+## Training
+1. Open the Google Colab Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+2. Make sure you are connected to GPU Runtime. This is achieved by going to "Edit -> Notebook Settings" and setting the hardware accelerator to GPU. 
+3. Execute the first cell. This will connect your google 
+![image](https://user-images.githubusercontent.com/61320147/115934317-31b0d480-a4aa-11eb-9f47-dfb219dfaccc.png)
+
 
