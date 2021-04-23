@@ -22,7 +22,7 @@ Just one last thing before we go for training. Create a folder in Google Drive w
 ## Training
 1. Open the Google Colab Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
 2. Make sure you are connected to GPU Runtime. This is achieved by going to "Edit -> Notebook Settings" and setting the hardware accelerator to GPU. 
-3. Execute the first cell. This will connect your google 
+3. Execute the first cell. This will connect your google drive with the Colab Notebook. Select the account in which you have uploaded the dataset. One thing that is worth noting here is that the Google account on which Colab is running does not need to be same as the Google account in which the dataset is present (We will use this feature soon. Just hold on!)
 ![image](https://user-images.githubusercontent.com/61320147/115934317-31b0d480-a4aa-11eb-9f47-dfb219dfaccc.png)
 
 
