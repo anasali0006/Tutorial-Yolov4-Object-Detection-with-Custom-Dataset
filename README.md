@@ -1,12 +1,12 @@
 # Yolov4-Object-Detection-with-Custom-Dataset(Google Colab)
 
-The following tutorial is being written for the people who have smaller background knowledge in Deep Learning techniques but want to train their Yolo Models easy way. 
+The following tutorial is being written for the people who want to train their Yolo Models easy way. 
 
 This tutorial is based on the article by Quang Nguyen which can be accessed from [here](https://towardsdatascience.com/yolov4-in-google-colab-train-your-custom-dataset-traffic-signs-with-ease-3243ca91c81d). I have just tried to made things a little easier for newbies, but you are highly encourarged to read the above mentioned article for better understanding and give the writer thumbsup. 
 
 Lets dive in.
 
-We will be using Google Colab for the training of our model YOLOv4. Google Colab provides us with free access to 12GB NVIDIA T4 GPU for a limited amount of time. We can use this free resource to our benefit and speed up our model training. Please keep in mind that once we start training of the model as big as YOLOv4, we will only be able to use if for some time and automatically be temporarily blocked by google. But don't worry about it. We will see how this issue can be tackled to some extent. 
+We will be using Google Colab for the training of our model YOLOv4. Google Colab provides us with free access to 12GB NVIDIA T4 GPU for a limited amount of time. We can use this free resource to our benefit and speed up our model training. Please keep in mind that once we start training of the model as big as YOLOv4, we will only be able to use if for some time and automatically be temporarily blocked by google. But don't worry about it. We will see how this issue can be tackled. 
 
 ## Prerequisites
 The only prerequisite that we have here is the dataset. You should have your dataset labelled in the YOLO format. Just a little info about Data Labelling in Yolo format:
@@ -51,7 +51,46 @@ The code which I have written for this part is a good strating point but it will
     * Create empty files named *test.txt* and *train.txt*
 
 9. Then we have to populate the *test.txt* and *train.txt* with test and train images names. I have provided code that will do that. In my code, 1000 images are being put into *test.txt*. You are free to change the number depending upon your dataset. \
-![image](https://user-images.githubusercontent.com/61320147/115941985-3a60d500-a4c1-11eb-9298-eb96f6889ca7.png)
+![image](https://user-images.githubusercontent.com/61320147/115941985-3a60d500-a4c1-11eb-9298-eb96f6889ca7.png)\
+
+10. Getting tired? We are just around the corner! Now its time to create a custom configuration or *cfg* file for training of your model. *cfg* file contains all the necessary information which model needs for its training like number of iterations, batch-size, learning-rate etc. Before running the cell below, open the file named *yolov4_setup.py*. Here spend some time to make changes:
+       * Change number of classes as we did previosly
+       * I would recommend changing the max_batches from 8000 to 3000. Max_batches refer to total number of training iterations. 
+       * Change width and height accordingly. For most applications, 416 x 416 size is sufficient. 
+       * If you have changed max_batches, also change the *steps* accordingly. These are the number of iterations after which learning rate decays. \
+       * ![image](https://user-images.githubusercontent.com/61320147/115942294-f373df00-a4c2-11eb-9402-4628e116e7a7.png) \
+After applying the above changes, run the cell below. 
+![image](https://user-images.githubusercontent.com/61320147/115942138-25d10c80-a4c2-11eb-8f8e-c28d2dc34461.png)
+
+This will generate a *cfg* file at */content/darknet-for-colab/cfg/yolov4_custom_train.cfg*. You can open the file and have a look. If you wish to edit something, it can also be done here. The meanings of parameters in *cfg* file can be found [here](https://github.com/AlexeyAB/darknet/wiki/CFG-Parameters-in-the-%5Bnet%5D-section)
+
+11. Now running the next cell will start the model training. \
+![image](https://user-images.githubusercontent.com/61320147/115942420-a80e0080-a4c3-11eb-9bc4-4681991b1aa8.png)
+It can be noted here that we have provided three things to the model
+       * data/yolov4.data 
+       * cfg/yolov4_custom_train.cfg 
+       * yolov4.conv.137 (pre-trained weights)
+ 
+Congrats! You have successfully started the model training!
+
+12. When the training is complete, file named *chart.png* will appear in the *darknet-for-colab* which will contain the loss/accuracy graph for training. But that usually takes a lot of time. You can keep an eye on the loss value from time to time and if it is around 1, the training is good enough. In the following figure, highlighted are the loss values. \
+![image](https://user-images.githubusercontent.com/61320147/115942752-30d96c00-a4c5-11eb-8f87-1c5c0dd1c54d.png)
+
+
+## Tips and Tricks
+As the model is now training, it is utilizing GPU at a very fast rate. After all, YOLOv4 is quite a big model. Google will sense this high usage, and might block your access after about 5-6 hours of training. Another issue which might occur is the fact that sometimes Colab is unpredictable and can crash, causing loss of training. But worry not. We have already ensured that our backup is stored in Google Drive. This essentially means that if any of the above things happen, we can continue the training from where it broke.
+
+For this purpose, I have created another block of code. Have a look: \
+![image](https://user-images.githubusercontent.com/61320147/115942799-5ebeb080-a4c5-11eb-9f54-b22e48f9a93a.png)
+Lets say your session broke due to some reason, you can reconnect and follow all the steps given above (and it will take only 2 mins once you get hang of it) except step 11. Now we have to specify the last_saved weights from our backup. When you look into the backup folder you have created on Google Drive, you will see weights files there. We need to provide path of that file and just run this cell. 
+
+## Google Limits the Resources
+You will see that after 5-6 hours, Colab might get disconnected. And when you try to connect again, it will say you have reached GPU limitations. Either we run the model training without GPU (which would take days, if not weeks) or we can look for some workaround. Workaround here is to change the Google account from which Colab was running. Suppose you are a group of 4-5 members working on the training, when one memeber's limit is reached, login with the second members account and you can resume the training with GPUs. Account can be changed by clicking the account icon on the top right side of page. Here I am mentioning again, the google account running the Colab need not be be same as the one whose drive is connected. So this means that even if you have switched the account, you can just attach the old accunt's drive where your backup is stored, and just resume the training. 
+
+If you have any questions, feel free to contact! 
+     
+
+
 
 
 
