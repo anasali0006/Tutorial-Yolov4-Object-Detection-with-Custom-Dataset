@@ -31,5 +31,11 @@ Just one last thing before we go for training. Create a folder in Google Drive w
         ![image](https://user-images.githubusercontent.com/61320147/115938376-db489380-a4b3-11eb-984c-38408e1b3881.png)
 6. We are going to implement transfer learning here. Transfer learning means to use pre-trained model which is trained on some common classes and train it further on our class(es). This way the chances of reaching the high accuracy are more and quicker as compared to training a whole model from scratch. Therefore, we are going to download pre-trained *weights*.\ 
 ![image](https://user-images.githubusercontent.com/61320147/115938342-ba803e00-a4b3-11eb-9440-a306730603a1.png)
+7. Next we are going to download the dataset which has been uploaded on the Google Drive. Kindly note that the current working directory is 'data'. We are going to put all the images and corresponding label-text files in the folder named *ts*. (Path: /darknet-for-colab/data/ts).
+The code which I have written for this part is a good strating point but it will change a little depending upon how have you zipped the images and where are you unzipping them. Just keep in mind that end goal is to have all the images and labels in the folder named *ts* inside *data* folder. \
+![image](https://user-images.githubusercontent.com/61320147/115940626-b22c0100-a4bb-11eb-919d-5eb4fcab7568.png)
+8. 
+
+
 
 
