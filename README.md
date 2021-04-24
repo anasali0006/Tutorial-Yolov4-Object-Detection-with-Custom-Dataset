@@ -36,7 +36,7 @@ For those of you who are new to Colab, the directory structure of the Colab can 
         *Note*: Various 'assert' statements have been added to ensure that we are in correct directory. \
         ![image](https://user-images.githubusercontent.com/61320147/115938376-db489380-a4b3-11eb-984c-38408e1b3881.png)
 
-6. We are going to implement transfer learning here. Transfer learning means to use pre-trained model which is trained on some common classes and train it further on our class(es). This way the chances of reaching the high accuracy are more and quicker as compared to training a whole model from scratch. Therefore, we are going to download pre-trained *weights*.\ 
+6. We are going to implement transfer learning here. Transfer learning means to use pre-trained model which is trained on some common classes and train it further on our class(es). This way the chances of reaching the high accuracy are more and quicker as compared to training a whole model from scratch. Therefore, we are going to download pre-trained *weights*.
 ![image](https://user-images.githubusercontent.com/61320147/115938342-ba803e00-a4b3-11eb-9440-a306730603a1.png)
 
 7. Next we are going to download the dataset which has been uploaded on the Google Drive. Kindly note that the working directory here is '/darknet-for-colab/data'. We are going to put all the images and corresponding label-text files in the folder named *ts*. (Path: /darknet-for-colab/data/ts).
@@ -47,18 +47,18 @@ The code which I have written for this part is a good strating point but it will
 8. So far so good? Perfect! Now is the time to look a little bit about changes that need to be done according to your own datasets. The following changes need to be made insde *data* directory:
     * Edit *yolov4.data*. Double click the file and it will open. Specify the number of classes that you wish to train the model for. And provide the path to backup folder. Kindly ensure that backup folder is in Google Drive so that backup data is permanently stored. In my code, you will see the example. Ctrl+S for save and we are good to go.
     * Create a file named *classes.names* and in each line enter the name of the class for which you are training the model. I was doing for pistols, so I added *pistol* to this file. \
-       ![image](https://user-images.githubusercontent.com/61320147/115941857-bdcdf680-a4c0-11eb-8b18-28fc6cc7b1dc.png) \
+       ![image](https://user-images.githubusercontent.com/61320147/115941857-bdcdf680-a4c0-11eb-8b18-28fc6cc7b1dc.png) 
     * Create empty files named *test.txt* and *train.txt*
 
 9. Then we have to populate the *test.txt* and *train.txt* with test and train images names. I have provided code that will do that. In my code, 1000 images are being put into *test.txt*. You are free to change the number depending upon your dataset. \
-![image](https://user-images.githubusercontent.com/61320147/115941985-3a60d500-a4c1-11eb-9298-eb96f6889ca7.png)\
+![image](https://user-images.githubusercontent.com/61320147/115941985-3a60d500-a4c1-11eb-9298-eb96f6889ca7.png)
 
 10. Getting tired? We are just around the corner! Now its time to create a custom configuration or *cfg* file for training of your model. *cfg* file contains all the necessary information which model needs for its training like number of iterations, batch-size, learning-rate etc. Before running the cell below, open the file named *yolov4_setup.py*. Here spend some time to make changes:
        * Change number of classes as we did previosly
        * I would recommend changing the max_batches from 8000 to 3000. Max_batches refer to total number of training iterations. 
        * Change width and height accordingly. For most applications, 416 x 416 size is sufficient. 
        * If you have changed max_batches, also change the *steps* accordingly. These are the number of iterations after which learning rate decays. \
-       * ![image](https://user-images.githubusercontent.com/61320147/115942294-f373df00-a4c2-11eb-9402-4628e116e7a7.png) \
+       * ![image](https://user-images.githubusercontent.com/61320147/115942294-f373df00-a4c2-11eb-9402-4628e116e7a7.png) 
 After applying the above changes, run the cell below. 
 ![image](https://user-images.githubusercontent.com/61320147/115942138-25d10c80-a4c2-11eb-8f8e-c28d2dc34461.png)
 
