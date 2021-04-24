@@ -20,7 +20,7 @@ Plus zip your dataset and upload it to Google Drive so it can be easily accessed
 Just one last thing before we go for training. Create a folder in Google Drive where we will store the backup of the training results in case the training is interrupted and we don't want to start from scratch. 
 
 ## Training
-1. Open the Google Colab Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+1. Open the Google Colab Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anasali0006/Tutorial-Yolov4-Object-Detection-with-Custom-Dataset/blob/main/Yolov4_training.ipynb)
 
 2. Make sure you are connected to GPU Runtime. This is achieved by going to "Edit -> Notebook Settings" and setting the hardware accelerator to GPU. 
 
