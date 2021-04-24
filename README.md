@@ -85,9 +85,13 @@ For this purpose, I have created another block of code. Have a look: \
 Lets say your session broke due to some reason, you can reconnect and follow all the steps given above (and it will take only 2 mins once you get hang of it) except step 11. Now we have to specify the last_saved weights from our backup. When you look into the backup folder you have created on Google Drive, you will see weights files there. We need to provide path of that file and just run this cell. 
 
 ## Google Limits the Resources
-You will see that after 5-6 hours, Colab might get disconnected. And when you try to connect again, it will say you have reached GPU limitations. Either we run the model training without GPU (which would take days, if not weeks) or we can look for some workaround. Workaround here is to change the Google account from which Colab was running. Suppose you are a group of 4-5 members working on the training, when one memeber's limit is reached, login with the second members account and you can resume the training with GPUs. Account can be changed by clicking the account icon on the top right side of page. Here I am mentioning again, the google account running the Colab need not be be same as the one whose drive is connected. So this means that even if you have switched the account, you can just attach the old accunt's drive where your backup is stored, and just resume the training. 
+You will see that after 5-6 hours, Colab might get disconnected. And when you try to connect again, it will say you have reached GPU limitations and Google has temporarily blocked your GPUs. Either we run the model training without GPU (which would take days, if not weeks) or we can look for some workaround. Workaround here is to change the Google account from which Colab was running. Suppose you are a group of 4-5 members working on the training, when one memeber's limit is reached, login with the second member's account and you can resume the training with GPUs. Account can be changed by clicking the account icon on the top right side of page. This will change the google account associated with Colab Notebook and now this fresh account, whichh has not been restricted by Google, can be used to run colab.
 
-If you have any questions, feel free to contact! 
+One interesting thing here is even tho you are now running the Colab with new Google account, the drive you have to attach in step 1 need not to be of the same new account. This means that you can attach the old account's drive and will have access to your backup weights. Bingo! Now you have access to GPUs as well as your backup so you can resume the training. When this account gets temporarily restricted, you can switch to third Google account and again resume the training with GPUs. 
+
+I hope it helps. 
+
+If you have any questions, feel free to ask! 
      
 
 
